@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout>
+    
+    <eventmon_adminhtml_index_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/mygento/vis.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/mygento/vis.css</name>
+            </action>     
+        </reference>
+        <reference name="content">
+            <block type="eventmon/adminhtml_event" name="eventmon_index" />
+        </reference>
+    </eventmon_adminhtml_index_index>
+    
+    
+</layout>

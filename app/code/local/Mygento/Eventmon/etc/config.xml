@@ -6,13 +6,84 @@
         </Mygento_Eventmon>
     </modules>
     <global>
+        <blocks>
+            <eventmon>
+                <class>Mygento_Eventmon_Block</class>
+            </eventmon>
+        </blocks>
+        <models>
+            <eventmon>
+                <class>Mygento_Eventmon_Model</class>
+                <resourceModel>eventmon_mysql4</resourceModel>
+            </eventmon>
+            <eventmon_mysql4>
+                <class>Mygento_Eventmon_Model_Mysql4</class>
+                <entities>
+                    <event>
+                        <table>mygento_eventmon_events</table>
+                    </event>
+                </entities>
+            </eventmon_mysql4>
+        </models>
         <helpers>
             <eventmon>
                 <class>Mygento_Eventmon_Helper</class>
             </eventmon>
         </helpers>
+        <resources>
+            <eventmon_setup>
+                <setup>
+                    <module>Mygento_Eventmon</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </eventmon_setup>
+            <eventmon_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </eventmon_write>
+            <eventmon_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </eventmon_read>
+        </resources>
     </global>
+
+    <admin>
+        <routers>
+            <eventmon>
+                <use>admin</use>
+                <args>
+                    <module>Mygento_Eventmon</module>
+                    <frontName>eventmon</frontName>
+                </args>
+            </eventmon>
+        </routers>
+    </admin>
+
     <adminhtml>
+        <menu>
+            <mygento translate="title" module="eventmon">
+                <title>Mygento Extensions</title>
+                <sort_order>60</sort_order>
+                <children>
+                    <eventmon translate="title" module="eventmon">
+                        <title>Event Monitoring</title>
+                        <sort_order>60</sort_order>
+                        <children>
+                            <index translate="title" module="eventmon">
+                                <title>Events</title>
+                                <sort_order>10</sort_order>
+                                <action>eventmon/adminhtml_index</action>
+                            </index>
+                        </children>
+                    </eventmon>
+                </children>
+            </mygento>
+        </menu>
         <translate>
             <modules>
                 <eventmon>
@@ -22,16 +93,32 @@
                 </eventmon>
             </modules>
         </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <eventmon>
+                                            <title>Event Monitoring</title>
+                                        </eventmon>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+        <layout>
+            <updates>
+                <eventmon>
+                    <file>mygento/eventmon.xml</file>
+                </eventmon>
+            </updates>
+        </layout>
     </adminhtml>
-    <frontend>
-        <translate>
-            <modules>
-                <eventmon>
-                    <files>
-                        <default>Mygento_Eventmon.csv</default>
-                    </files>
-                </eventmon>
-            </modules>
-        </translate>
-    </frontend>
 </config>

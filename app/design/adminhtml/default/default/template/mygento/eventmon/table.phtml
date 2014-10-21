@@ -1,0 +1,9 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-online-visitors"><?php echo Mage::helper('eventmon')->__('Events') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<?php echo $this->getChildHtml('graph') ?>
+<?php echo $this->getChildHtml('grid') ?>
