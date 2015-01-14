@@ -27,14 +27,14 @@ class Mygento_Eventmon_Block_Adminhtml_Event_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn('event', array(
             'header' => Mage::helper('eventmon')->__('Event'),
             'align' => 'right',
-            'width' => '30px',
+            'width' => '100px',
             'index' => 'event',
         ));
         
         $this->addColumn('status', array(
             'header' => Mage::helper('sales')->__('Status'),
             'index' => 'status',
-            'width' => '100px',
+            'width' => '50px',
         ));
         
         $this->addColumn('message', array(

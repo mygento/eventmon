@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Mygento_Eventmon>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Mygento_Eventmon>
     </modules>
     <global>
@@ -14,16 +14,17 @@
         <models>
             <eventmon>
                 <class>Mygento_Eventmon_Model</class>
-                <resourceModel>eventmon_mysql4</resourceModel>
+                <resourceModel>eventmon_resource</resourceModel>
             </eventmon>
-            <eventmon_mysql4>
-                <class>Mygento_Eventmon_Model_Mysql4</class>
+            <eventmon_resource>
+                <class>Mygento_Eventmon_Model_Resource</class>
+                <deprecatedNode>eventmon_mysql4</deprecatedNode>
                 <entities>
                     <event>
                         <table>mygento_eventmon_events</table>
                     </event>
                 </entities>
-            </eventmon_mysql4>
+            </eventmon_resource>
         </models>
         <helpers>
             <eventmon>
