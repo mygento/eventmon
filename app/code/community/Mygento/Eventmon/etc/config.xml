@@ -5,6 +5,15 @@
             <version>1.1.0</version>
         </Mygento_Eventmon>
     </modules>
+    <default>
+        <eventmon>
+            <general>
+                <enabled>1</enabled>
+                <debug>0</debug>
+                <keep>180</keep>
+            </general>
+        </eventmon>
+    </default>
     <global>
         <blocks>
             <eventmon>
@@ -52,7 +61,18 @@
             </eventmon_read>
         </resources>
     </global>
-
+    <crontab>
+        <jobs>
+            <eventmon_clean>
+                <schedule>
+                    <cron_expr>* 1,3,5,7,9,11,13,15,17,19,21,23 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>eventmon/event::clean</model>
+                </run>
+            </eventmon_clean>
+        </jobs>
+    </crontab>
     <admin>
         <routers>
             <eventmon>

@@ -2,6 +2,8 @@
 
 class Mygento_Eventmon_Model_Event extends Mage_Core_Model_Abstract {
 
+    const XML_LOG_CLEAN_DAYS = 'eventmon/general/keep';
+
     public function _construct() {
         parent::_construct();
         $this->_init('eventmon/event');
@@ -49,6 +51,18 @@ class Mygento_Eventmon_Model_Event extends Mage_Core_Model_Abstract {
         $this->setEndTime(time());
         $this->save();
         return $this;
+    }
+
+    public function getLogCleanTime() {
+        return Mage::getStoreConfig(self::XML_LOG_CLEAN_DAYS) * 60 * 60 * 24;
+    }
+
+    /**
+     * Clean database via cron
+     */
+    public function clean() {
+        $time = $this->getLogCleanTime();
+        $this->getResource()->clean($time);
     }
 
 }
