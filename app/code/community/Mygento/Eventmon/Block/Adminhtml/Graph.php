@@ -1,8 +1,10 @@
 <?php
 
-class Mygento_Eventmon_Block_Adminhtml_Graph extends Mage_Adminhtml_Block_Template {
+class Mygento_Eventmon_Block_Adminhtml_Graph extends Mage_Adminhtml_Block_Template
+{
 
-    public function _toHtml() {
+    public function _toHtml()
+    {
 
         $items = Array();
         $groups = Array();
@@ -35,13 +37,13 @@ class Mygento_Eventmon_Block_Adminhtml_Graph extends Mage_Adminhtml_Block_Templa
   var container = document.getElementById('visualization');
 
   // create groups
-  var groups = new vis.DataSet(".json_encode($new_groups).");
+  var groups = new vis.DataSet(" . json_encode($new_groups) . ");
       
   // Create a DataSet (allows two way data-binding)
-  var items = new vis.DataSet(".json_encode($new_items).");
+  var items = new vis.DataSet(" . json_encode($new_items) . ");
 
   // Configuration for the Timeline
-  var options = {};
+  var options = {width: '100%', height: '300px',zoomMax: 100000000, zoomMin: 10000, type: 'box'};
 
   // Create a Timeline
   var timeline = new vis.Timeline(container, items, options);
@@ -51,5 +53,4 @@ class Mygento_Eventmon_Block_Adminhtml_Graph extends Mage_Adminhtml_Block_Templa
         ";
         return $html;
     }
-
 }
